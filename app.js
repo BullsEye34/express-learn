@@ -13,7 +13,10 @@ const postsRoute = require('./routes/post');
 const app = express();
 
 /// Run this for every request
-app.use(bodyParser);
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 
 /// Routes
 app.use('/posts', postsRoute);
