@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/BullsEye34/express-learn/issues"
   },
-  "homepage": "https://github.com/BullsEye34/express-learn#readme"
+  "homepage": "https://github.com/BullsEye34/express-learn#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.10",
+    "nodemon": "^2.0.7"
+  }
 }
