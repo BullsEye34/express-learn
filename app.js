@@ -2,7 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv/config')
-const bodyParser = require('body-parser')
+const cors = require('cors')
 
 
 /// Import Routes
@@ -12,7 +12,9 @@ const postsRoute = require('./routes/post');
 /// Initialise Server
 const app = express();
 
+/// MiddleWares till Mongoose
 /// Run this for every request
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
