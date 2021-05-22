@@ -1,0 +1,19 @@
+{
+  "name": "expressjstutorial",
+  "version": "1.0.0",
+  "description": "Express JS Learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BullsEye34/express-learn.git"
+  },
+  "author": "P Vamshi Prasad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BullsEye34/express-learn/issues"
+  },
+  "homepage": "https://github.com/BullsEye34/express-learn#readme"
+}
