@@ -14,13 +14,13 @@ router.post('/register', async (req,res)=>{
     if(userExists) return res.status(400).json({err: true, message: "Email Already Exists"});
 
     // Hash Password
-    const salt = await bcrypt.gentSalt(1024);
+    const salt = await bcrypt.genSalt(1024);
     const hashPassword = await bcrypt.hash(req.body.password, salt);
 
 
     const user = new User({
         name: req.body.name,
-        password: req.body.password,
+        password: hashPassword,
         phone: req.body.phone,
         img: req.body.img,
         email: req.body.email
@@ -36,6 +36,17 @@ router.post('/register', async (req,res)=>{
         }).status(400);
     }
     res.json({page:"Register"})
+});
+
+router.post('/login',async (req,res)=>{
+    // Validate User before Logging User
+    const {error} = await loginValidation(req.body);
+    if(error) return res.json({err:true,message:error.details[0].message}).status(400);
+   
+    // Check if user Doesn't Exists
+    const userExists = await User.findOne({email: req.body.email});
+    if(!userExists) return res.status(400).json({err: true, message: "Email Does NOT Exist"});
+
 })
 
 
