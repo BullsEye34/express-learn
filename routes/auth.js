@@ -1,8 +1,14 @@
 const router = require('express').Router();
+const Joi = require('joi');
 const User = require('../models/User');
 
-
 router.post('/register', async (req,res)=>{
+
+    // Validate User before Creating User
+    const {error} = await schema.validate(req.body);
+    if(error) return res.json({err:true,message:error.details[0].message}).status(400);
+
+
     const user = new User({
         name: req.body.name,
         password: req.body.password,
