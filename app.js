@@ -23,7 +23,7 @@ app.use(express.urlencoded({
 
 /// Routes
 app.use('/posts', postsRoute);
-app.use('/auth/',authRoute);
+app.use('/auth',authRoute);
 
 app.get('/', (req,res)=>res.send("We Are On Home"))
 

@@ -15,6 +15,7 @@ const userSchema = mongoose.Schema({
     },
     phone:{
         type: Number,
+        default:'',
         
     },
     img: {
@@ -29,4 +30,4 @@ const userSchema = mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('userModel', userSchema);
+module.exports = mongoose.model('User', userSchema);
