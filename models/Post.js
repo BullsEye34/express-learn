@@ -13,6 +13,10 @@ const postsSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    creator:{
+        type: String,
+        required: true
+    }
 })
 
 module.exports = mongoose.model('Posts', postsSchema)

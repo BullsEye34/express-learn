@@ -18,7 +18,7 @@ router.get('/', verify,async (req,res)=>{
 
 
 /// Gets back Specific Posts
-router.get('/:postID', async (req,res)=>{
+router.get('/:postID', verify,async (req,res)=>{
     try{
         const post = await Post.findById(req.params.postID);
         res.json({post: post});
@@ -30,7 +30,7 @@ router.get('/:postID', async (req,res)=>{
 });
 
 /// Deletes back Specific Posts
-router.delete('/:postID', async (req,res)=>{
+router.delete('/:postID',verify, async (req,res)=>{
     try{
         const post = await Post.findByIdAndDelete(req.params.postID);
         res.json({deleted: post});
@@ -42,13 +42,14 @@ router.delete('/:postID', async (req,res)=>{
 });
 
 /// Update Specific Posts
-router.patch('/:postID', async (req,res)=>{
+router.patch('/:postID', verify,async (req,res)=>{
     try{
         const post = await Post.findByIdAndUpdate(req.params.postID,
             {
                 $set:{
                     title:req.body.title,
-                    description: req.body.description
+                    description: req.body.description,
+                    creator: req.user._id
                 }
         });
         res.json({updated: post});
@@ -60,10 +61,11 @@ router.patch('/:postID', async (req,res)=>{
 });
 
 /// Creates A Post
-router.post('/', async (req,res)=>{
+router.post('/', verify, async (req,res)=>{
     const post = new Post({
         title:req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        creator: req.user._id
     });
 
     try{
