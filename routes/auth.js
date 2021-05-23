@@ -53,8 +53,9 @@ router.post('/login',async (req,res)=>{
     if(!isValidPassword) return res.status(400).json({err: true, message: "Password is not correct"})
 
     // Create and Assign Token
-    const token = await jwt.sign({_id: user._id}, )
-
+    const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET);
+    res.header('Authentication', token);
+    
 })
 
 
