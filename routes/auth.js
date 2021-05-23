@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const Joi = require('joi');
 const User = require('../models/User');
+const {registerValidation, loginValidation} =require('./validation')
 
 router.post('/register', async (req,res)=>{
 
     // Validate User before Creating User
-    const {error} = await schema.validate(req.body);
+    const {error} = await registerValidation(req.body);
     if(error) return res.json({err:true,message:error.details[0].message}).status(400);
 
 
