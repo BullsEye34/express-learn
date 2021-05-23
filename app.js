@@ -7,6 +7,7 @@ const cors = require('cors')
 
 /// Import Routes
 const postsRoute = require('./routes/post');
+const authRoute = require('./routes/auth');
 
 
 /// Initialise Server
@@ -22,6 +23,7 @@ app.use(express.urlencoded({
 
 /// Routes
 app.use('/posts', postsRoute);
+app.use('/auth/',authRoute);
 
 app.get('/', (req,res)=>res.send("We Are On Home"))
 
